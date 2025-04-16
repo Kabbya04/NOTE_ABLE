@@ -1,0 +1,51 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.controls {
+  margin-bottom: 10px;
+}
+
+#colorPicker {
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+#lineThickness {
+  vertical-align: middle;
+  margin: 0 10px;
+  padding: 3px;
+  border-radius: 3px;
+  border: 1px solid #333;
+}
+
+#clearButton {
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#clearButton:hover {
+  background-color: #e60000;
+}
+
+#drawingCanvas {
+  justify-content: center; /* horizontal center */
+  align-items: center;  /*verticle center */
+  border: 2px solid #333;
+  background-color: white;
+  cursor: crosshair;
+}
