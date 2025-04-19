@@ -1,0 +1,73 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+      Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    max-width: 38rem;
+    overflow: hidden; /* Prevent scrollbars */
+  }
+  
+  .container {
+    position: relative; /* For absolute positioning of controls */
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  #drawingCanvas {
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid #333;
+    background-color: white;
+    cursor: crosshair;
+    display: block;
+  }
+  
+  .controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  #colorPicker {
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+  }
+  
+  #lineThickness, #pageSelector {
+    padding: 3px;
+    border-radius: 3px;
+    border: 1px solid #333;
+    cursor: pointer;
+  }
+
+  #backButton {
+    background-color: #6c757d; /* Gray to distinguish from other buttons */
+  }
+  
+  #backButton:hover {
+    background-color: #5a6268;
+  }
+  
+  button {
+    padding: 5px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  button:hover {
+    background-color: #ff4d4d;
+    color: white;
+  }

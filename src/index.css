@@ -1,9 +1,10 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
-  margin: auto;
+  margin: 0;
+  padding: 0;
   max-width: 38rem;
-  padding: 2rem;
+  overflow: hidden; /* Prevent scrollbars */
 }
 
 .container {
@@ -12,40 +13,76 @@ body {
   text-align: center;
 }
 
-.controls {
-  margin-bottom: 10px;
+h1, h2 {
+  color: #333;
 }
 
-#colorPicker {
-  vertical-align: middle;
-  margin: 0 10px;
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-#lineThickness {
-  vertical-align: middle;
-  margin: 0 10px;
-  padding: 3px;
-  border-radius: 3px;
-  border: 1px solid #333;
+.create-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
-#clearButton {
-  padding: 5px 10px;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 3px;
+.notebook-list {
+  margin-top: 20px;
+}
+
+#notebookList {
+  margin: 10px 0;
+  min-height: 50px;
+  text-align: center;
+  color: #666;
+}
+
+.notebook-item {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 5px 0;
   cursor: pointer;
 }
 
-#clearButton:hover {
-  background-color: #e60000;
+.notebook-item:hover {
+  background-color: #f0f0f0;
 }
 
-#drawingCanvas {
-  justify-content: center; /* horizontal center */
-  align-items: center;  /*verticle center */
-  border: 2px solid #333;
-  background-color: white;
-  cursor: crosshair;
+#notebookName {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+#notebookSelector {
+  padding: 5px;
+  margin: 10px 0;
+}
+
+
+button {
+  margin: 20px 0 0 20px; /* top, right, bottom, left */
+  padding: 10px 10px; /* top, right, bottom, left */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  width: 150px;  
+  height: 40px; 
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

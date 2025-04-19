@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NOTE_ABLE</title>
+    <link rel="stylesheet" href="notebook.css" />
+
+    <script defer src="render_notebook.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="controls">
+
+        <button id="backButton">Back</button>
+        
+        <input type="color" id="colorPicker" value="#000000" title="Choose color">
+
+        <select id="lineThickness" title="Line thickness">
+          <option value="2">2px</option>
+          <option value="5" selected>5px</option>
+          <option value="10">10px</option>
+          <option value="20">20px</option>
+        </select>
+
+        <button id="clearButton" title="Clear canvas">🗑️</button>
+        <button id="addPage" title="Add page">➕</button>
+        <select id="pageSelector" title="Select page"></select>
+        <button id="saveNotebook" title="Save notebook">💾</button>
+        <button id="exportPdf" title="Export as PDF">📄</button>
+        
+      </div>
+
+      <canvas id="drawingCanvas"></canvas> 
+
+    </div>
+
+    <canvas width="300" height="200"></canvas>
+  
+  </body>
+
+</html>
