@@ -131,6 +131,7 @@ try {
   document.getElementById('pageSelector').addEventListener('change', (e) => {
     console.log('Changing page to:', e.target.value);
     pageImages[currentPage - 1] = canvas.toDataURL();
+    // biome-ignore lint/style/useNumberNamespace: <explanation>
     currentPage = parseInt(e.target.value);
     loadPage(currentPage);
   });
@@ -184,5 +185,6 @@ try {
   loadMetadata();
 } catch (err) {
   console.error('Renderer notebook error:', err);
+  // biome-ignore lint/style/useTemplate: <explanation>
   document.body.innerHTML = '<h1>Error: Renderer failed to initialize</h1><p>' + err.message + '</p>';
 }

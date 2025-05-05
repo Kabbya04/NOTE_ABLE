@@ -1,88 +1,27 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  max-width: 38rem;
-  overflow: hidden; /* Prevent scrollbars */
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-h1, h2 {
-  color: #333;
-}
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.create-section {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.notebook-list {
-  margin-top: 20px;
+/* Custom styles not handled by Bulma */
+#notebookSelector {
+  display: none; /* Keep for JS toggling */
 }
 
 #notebookList {
-  margin: 10px 0;
-  min-height: 50px;
-  text-align: center;
-  color: #666;
+  min-height: 50px; /* Maintain specific height */
 }
 
+/* Style notebook items created by JS */
 .notebook-item {
   padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: white;
+  border: 1px solid #3c3c34;
   border-radius: 5px;
   margin: 5px 0;
   cursor: pointer;
 }
 
 .notebook-item:hover {
-  background-color: #f0f0f0;
+  background-color: #a6d8b5; /* Light shade of #83c29a */
 }
 
+/* Override input size */
 #notebookName {
-  padding: 5px;
-  margin-right: 10px;
-}
-
-#notebookSelector {
-  padding: 5px;
-  margin: 10px 0;
-}
-
-
-button {
-  margin: 20px 0 0 20px; /* top, right, bottom, left */
-  padding: 10px 10px; /* top, right, bottom, left */
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  width: 150px;  
-  height: 40px; 
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+  width: 200px;
 }

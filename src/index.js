@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 const path = require('path');
+// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 const fs = require('fs').promises;
 
 console.log('Main process starting');

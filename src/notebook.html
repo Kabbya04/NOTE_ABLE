@@ -4,41 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NOTE_ABLE</title>
+    <link rel="stylesheet" href="bulma-custom.css" />
     <link rel="stylesheet" href="notebook.css" />
-
-    <script defer src="render_notebook.js"></script>
   </head>
   <body>
-
     <div class="container">
-
-      <div class="controls">
-
-        <button id="backButton">Back</button>
-        
-        <input type="color" id="colorPicker" value="#000000" title="Choose color">
-
-        <select id="lineThickness" title="Line thickness">
-          <option value="2">2px</option>
-          <option value="5" selected>5px</option>
-          <option value="10">10px</option>
-          <option value="20">20px</option>
-        </select>
-
-        <button id="clearButton" title="Clear canvas">🗑️</button>
-        <button id="addPage" title="Add page">➕</button>
-        <select id="pageSelector" title="Select page"></select>
-        <button id="saveNotebook" title="Save notebook">💾</button>
-        <button id="exportPdf" title="Export as PDF">📄</button>
-        
+      <div class="field is-grouped controls">
+        <div class="control">
+          <button class="button is-dark" id="backButton" title="Back">Back</button>
+        </div>
+        <div class="control">
+          <input type="color" id="colorPicker" value="#000000" title="Choose color" class="input is-small">
+        </div>
+        <div class="control">
+          <div class="select is-small">
+            <select id="lineThickness" title="Line thickness">
+              <option value="2">2px</option>
+              <option value="5" selected>5px</option>
+              <option value="10">10px</option>
+              <option value="20">20px</option>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <button class="button is-primary" id="clearButton" title="Clear canvas">🗑️</button>
+        </div>
+        <div class="control">
+          <button class="button is-primary" id="addPage" title="Add page">➕</button>
+        </div>
+        <div class="control">
+          <div class="select is-small">
+            <select id="pageSelector" title="Select page"></select>
+          </div>
+        </div>
+        <div class="control">
+          <button class="button is-primary" id="saveNotebook" title="Save notebook">💾</button>
+        </div>
+        <div class="control">
+          <button class="button is-primary" id="exportPdf" title="Export as PDF">📄</button>
+        </div>
       </div>
-
-      <canvas id="drawingCanvas"></canvas> 
-
+      <canvas id="drawingCanvas"></canvas>
     </div>
-
-    <canvas width="300" height="200"></canvas>
-  
+    <script defer src="render_notebook.js"></script>
   </body>
-
 </html>

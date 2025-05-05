@@ -1,0 +1,68 @@
+@import "../node_modules/bulma/css/bulma.min.css";
+
+:root {
+  --primary: #83c29a;
+  --primary-hover: #6ba37e;
+  --secondary: #3c3c34;
+  --secondary-hover: #57574c;
+  --neutral: #cec5a0;
+  --neutral-dark: #b7a989;
+  --disabled: #b0b0b0;
+  --text: #3c3c34;
+}
+
+/* Override Bulma's primary color */
+.button.is-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.button.is-primary:hover, .button.is-primary:focus {
+  background-color: var(--primary-hover);
+}
+
+/* Override Bulma's dark button (for Back button) */
+.button.is-dark {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.button.is-dark:hover, .button.is-dark:focus {
+  background-color: var(--secondary-hover);
+}
+
+/* Override disabled button */
+.button[disabled] {
+  background-color: var(--disabled);
+  border-color: var(--disabled);
+  color: #7a7a7a;
+  opacity: 0.5;
+}
+
+/* Override text and headings */
+.title, .subtitle, .has-text-grey {
+  color: var(--text) !important;
+}
+
+/* Override input and select borders */
+.input, .select select, .slider {
+  border-color: var(--secondary);
+}
+
+.input:focus, .select select:focus, .slider:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.125em rgba(131, 194, 154, 0.25);
+}
+
+/* Override background */
+body, .section {
+  background-color: var(--neutral);
+}
+
+/* Override container for notebook controls */
+.field.is-grouped {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

@@ -4,28 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NOTE_ABLE</title>
+    <link rel="stylesheet" href="bulma-custom.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="index.css" />
-
     <script defer src="render_index.js"></script>
   </head>
   <body>
-
-    <div class="container">
-      <h1>Welcome to NOTE_ABLE</h1>
-      <div class="actions">
-        <div class="create-section">
-          <input type="text" id="notebookName" placeholder="Notebook name">
-          <button id="createNotebook">Create Notebook</button>
+    <section class="section">
+      <div class="container">
+        <h1 class="title has-text-centered">Welcome to NOTE_ABLE</h1>
+        <div class="block">
+          <div class="field has-addons is-centered">
+            <div class="control">
+              <input class="input" type="text" id="notebookName" placeholder="Notebook name">
+            </div>
+            <div class="control">
+              <button class="button is-primary" id="createNotebook">Create Notebook</button>
+            </div>
+          </div>
         </div>
-        <div class="notebook-list">
-          <h2>Available Notebooks</h2>
-          <div id="notebookList">Loading notebooks...</div>
-          <select id="notebookSelector" style="display: none;"></select>
-          <button id="openNotebook" disabled>Open Notebook</button>
+        <div class="block">
+          <h2 class="subtitle has-text-centered">Available Notebooks</h2>
+          <div id="notebookList" class="has-text-grey">Loading notebooks...</div>
+          <div class="field has-addons is-centered mt-4">
+            <div class="control">
+              <div class="select">
+                <select id="notebookSelector" style="display: none;"></select>
+              </div> 
+            </div>
+            <div class="control">
+              <button class="button is-primary" id="openNotebook" disabled>Open Notebook</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
+    </section>
   </body>
-
 </html>

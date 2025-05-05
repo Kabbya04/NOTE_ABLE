@@ -28,6 +28,7 @@ try {
         notebookSelector.style.display = 'block';
         openButton.disabled = true;
 
+        // biome-ignore lint/complexity/noForEach: <explanation>
         notebooks.forEach((notebook) => {
           const option = document.createElement('option');
           option.value = notebook.dir;
@@ -115,5 +116,6 @@ try {
   loadNotebooks();
 } catch (err) {
   console.error('Renderer error:', err);
+  // biome-ignore lint/style/useTemplate: <explanation>
   document.body.innerHTML = '<h1>Error: Renderer failed to initialize</h1><p>' + err.message + '</p>';
 }
