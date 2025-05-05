@@ -14,7 +14,6 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'render_index.js'),
       nodeIntegration: true,
       contextIsolation: false
     }
@@ -46,17 +45,18 @@ function createNotebookWindow(notebookDir) {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'render_notebook.js'),
       nodeIntegration: true,
       contextIsolation: false
     }
   });
 
-  notebookWindow.loadFile('src/notebook.html', {
+  notebookWindow.loadFile(path.join(__dirname, 'notebook.html'), {
     query: { notebookDir: encodeURIComponent(notebookDir) }
   }).catch((err) => {
     console.error('Failed to load notebook.html:', err);
   });
+
+  notebookWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

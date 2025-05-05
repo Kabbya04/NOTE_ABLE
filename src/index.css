@@ -1,27 +1,49 @@
 /* Custom styles not handled by Bulma */
-#notebookSelector {
-  display: none; /* Keep for JS toggling */
+#notebookName {
+  width: 200px; /* Override input size */
 }
 
-#notebookList {
-  min-height: 50px; /* Maintain specific height */
-}
-
-/* Style notebook items created by JS */
-.notebook-item {
+.notebook-card {
   padding: 10px;
   background-color: white;
   border: 1px solid #3c3c34;
   border-radius: 5px;
-  margin: 5px 0;
+  margin: 10px;
   cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s;
 }
 
-.notebook-item:hover {
+.notebook-card:hover {
   background-color: #a6d8b5; /* Light shade of #83c29a */
+  transform: scale(1.05);
 }
 
-/* Override input size */
-#notebookName {
-  width: 200px;
+.notebook-card.selected {
+  border: 2px solid #83c29a;
+  background-color: #a6d8b5;
+}
+
+.notebook-card .icon {
+  font-size: 48px; /* Medium-sized icon */
+  color: #3c3c34;
+  margin-bottom: 5px;
+}
+
+.notebook-card .name {
+  color: #3c3c34;
+  font-size: 16px;
+}
+
+#selectedNotebook {
+  margin-top: 20px;
+}
+
+.selected-notebook-name {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #83c29a;
+  color: white;
+  border-radius: 50px; /* Round shape */
+  font-weight: bold;
 }

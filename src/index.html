@@ -24,14 +24,16 @@
           </div>
         </div>
         <div class="block">
-          <h2 class="subtitle has-text-centered">Available Notebooks</h2>
-          <div id="notebookList" class="has-text-grey">Loading notebooks...</div>
-          <div class="field has-addons is-centered mt-4">
-            <div class="control">
-              <div class="select">
-                <select id="notebookSelector" style="display: none;"></select>
-              </div> 
-            </div>
+          <div id="notebookGrid" class="columns is-multiline is-centered">
+            <!-- Notebook icons populated by render_index.js -->
+          </div>
+          <div id="noNotebooks" class="has-text-centered has-text-grey" style="display: none;">
+            No notebooks available yet. Please create one.
+          </div>
+          <div id="selectedNotebook" class="has-text-centered" style="display: none;">
+            <span class="selected-notebook-name"></span>
+          </div>
+          <div class="field is-centered mt-4">
             <div class="control">
               <button class="button is-primary" id="openNotebook" disabled>Open Notebook</button>
             </div>

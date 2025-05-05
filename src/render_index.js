@@ -5,55 +5,60 @@ const { ipcRenderer } = require('electron');
 try {
   async function loadNotebooks() {
     console.log('Loading notebooks');
-    const notebookList = document.getElementById('notebookList');
-    const notebookSelector = document.getElementById('notebookSelector');
+    const notebookGrid = document.getElementById('notebookGrid');
+    const noNotebooks = document.getElementById('noNotebooks');
+    const selectedNotebook = document.getElementById('selectedNotebook');
+    const selectedNotebookName = document.querySelector('.selected-notebook-name');
     const openButton = document.getElementById('openNotebook');
 
-    if (!notebookList || !notebookSelector || !openButton) {
-      console.error('DOM elements missing');
-      notebookList.textContent = 'Error: UI elements not found';
+    if (!notebookGrid || !noNotebooks || !selectedNotebook || !selectedNotebookName || !openButton) {
+      console.error('DOM elements missing:', {
+        notebookGrid: !!notebookGrid,
+        noNotebooks: !!noNotebooks,
+        selectedNotebook: !!selectedNotebook,
+        selectedNotebookName: !!selectedNotebookName,
+        openButton: !!openButton
+      });
+      document.body.innerHTML = '<h1>Error: UI elements not found</h1>';
       return;
     }
 
     try {
       const notebooks = await ipcRenderer.invoke('list-notebooks');
       console.log('Notebooks received:', notebooks);
-      if (notebooks.length === 0) {
-        notebookList.textContent = 'EMPTY';
-        notebookSelector.style.display = 'none';
-        openButton.disabled = true;
-      } else {
-        notebookList.innerHTML = '';
-        notebookSelector.innerHTML = '';
-        notebookSelector.style.display = 'block';
-        openButton.disabled = true;
 
-        // biome-ignore lint/complexity/noForEach: <explanation>
-        notebooks.forEach((notebook) => {
-          const option = document.createElement('option');
-          option.value = notebook.dir;
-          option.textContent = notebook.name;
-          notebookSelector.appendChild(option);
+      notebookGrid.innerHTML = '';
+      noNotebooks.style.display = notebooks.length === 0 ? 'block' : 'none';
+      selectedNotebook.style.display = 'none';
+      openButton.disabled = true;
 
-          const notebookItem = document.createElement('div');
-          notebookItem.className = 'notebook-item';
-          notebookItem.textContent = notebook.name;
-          notebookItem.addEventListener('click', () => {
-            notebookSelector.value = notebook.dir;
-            notebookSelector.dispatchEvent(new Event('change'));
-          });
-          notebookList.appendChild(notebookItem);
-        });
-
-        if (notebooks.length > 0) {
-          notebookSelector.value = notebooks[0].dir;
+      // biome-ignore lint/complexity/noForEach: <explanation>
+      notebooks.forEach((notebook) => {
+        const card = document.createElement('div');
+        card.className = 'column is-3 notebook-card';
+        card.innerHTML = `
+          <div class="icon">
+            <i class="fas fa-book"></i>
+          </div>
+          <div class="name">${notebook.name}</div>
+        `;
+        card.dataset.dir = notebook.dir;
+        card.addEventListener('click', () => {
+          // biome-ignore lint/complexity/noForEach: <explanation>
+          document.querySelectorAll('.notebook-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          selectedNotebookName.textContent = notebook.name;
+          selectedNotebook.style.display = 'block';
           openButton.disabled = false;
-        }
-      }
+          openButton.dataset.dir = notebook.dir;
+        });
+        notebookGrid.appendChild(card);
+      });
     } catch (err) {
       console.error('Error loading notebooks:', err);
-      notebookList.textContent = 'Error loading notebooks';
-      notebookSelector.style.display = 'none';
+      noNotebooks.textContent = `Error loading notebooks: ${err.message}`;
+      noNotebooks.style.display = 'block';
+      selectedNotebook.style.display = 'none';
       openButton.disabled = true;
     }
   }
@@ -86,8 +91,7 @@ try {
   if (openButton) {
     openButton.addEventListener('click', async () => {
       console.log('Open notebook clicked');
-      const notebookSelector = document.getElementById('notebookSelector');
-      const notebookDir = notebookSelector.value;
+      const notebookDir = openButton.dataset.dir;
       if (notebookDir) {
         try {
           await ipcRenderer.invoke('open-notebook-window', notebookDir);
@@ -96,26 +100,20 @@ try {
           console.error('Error opening notebook:', err);
           alert(`Error opening notebook: ${err.message}`);
         }
+      } else {
+        console.error('No notebook directory set for open button');
       }
     });
   } else {
     console.error('Open button not found');
   }
 
-  const notebookSelector = document.getElementById('notebookSelector');
-  if (notebookSelector) {
-    notebookSelector.addEventListener('change', () => {
-      console.log('Notebook selector changed');
-      document.getElementById('openNotebook').disabled = !notebookSelector.value;
-    });
-  } else {
-    console.error('Notebook selector not found');
-  }
-
   console.log('Calling loadNotebooks');
-  loadNotebooks();
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM content loaded');
+    loadNotebooks();
+  });
 } catch (err) {
   console.error('Renderer error:', err);
-  // biome-ignore lint/style/useTemplate: <explanation>
-  document.body.innerHTML = '<h1>Error: Renderer failed to initialize</h1><p>' + err.message + '</p>';
+  document.body.innerHTML = `<h1>Error: Renderer failed to initialize</h1><p>${err.message}</p>`;
 }
